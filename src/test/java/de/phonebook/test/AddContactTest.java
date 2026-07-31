@@ -11,16 +11,18 @@ public class AddContactTest extends TestBase{
 
    @BeforeMethod
    public void precondition(){
-       clickOnLoginLink();
-       fillLoginRegisterForm("irinafengshui71@gmail.com", "Aa12345!");
-       clickLoginButton();
+       app.getUser().clickOnLoginLink();
+       app.getUser().fillLoginRegisterForm( new de.phonebook.model.User().setEmail("irinafengshui71@gmail.com").setPassword("Aa12345!"));
+       app.getUser().clickLoginButton();
    }
    @Test
     public void addContactPositiveTest(){
-       clickOnAddLink();
-       fillAddContactForm("Oliver", "Kan", "123456782390", "kan@gmail.com", "TelAviv", "QA");
-       clickOnSaveButton();
-       Assert.assertTrue(verifyByName("Oliver"));
+       app.getContact().clickOnAddLink();
+       app.getContact().fillAddContactForm(new de.phonebook.model.Contact().setName("Oliver")
+               .setLastname("Kan").setPhone("123456782390")
+               .setEmail("kan@gmail.com").setAddress("TelAviv").setDesk("QA"));
+       app.getContact().clickOnSaveButton();
+       Assert.assertTrue(app.getContact().verifyByName("Oliver"));
 
    }
 
@@ -31,8 +33,8 @@ public class AddContactTest extends TestBase{
     }
 
     public void removeContact() {
-        click(By.cssSelector(".contact-item_card__2SOIM"));
-        click(By.xpath("//button[.='Remove']"));
+        app.getContact().click(By.cssSelector(".contact-item_card__2SOIM"));
+        app.getContact().click(By.xpath("//button[.='Remove']"));
     }
 }
 //before -login

@@ -9,20 +9,20 @@ public class CreateAccountTests extends TestBase {
     @Test(enabled = false)
     public void newUserRegisterPositiveTest() {
 
-        clickOnLoginLink();
-        fillLoginRegisterForm(newEmail(), "Aa12345!");
-        clickOnRegistrationButton();
-        Assert.assertTrue(isSignOutButtonPresent());
+        app.getUser().clickOnLoginLink();
+        app.getUser().fillLoginRegisterForm(new de.phonebook.model.User().setEmail("irinafengshui71@gmail.com").setPassword("Aa12345!"));
+        app.getUser().clickOnRegistrationButton();
+        Assert.assertTrue(app.getUser().isSignOutButtonPresent());
 
     }
 
 
     @Test
     public void existedUserRegisterNegativeTest() {
-        clickOnLoginLink();
-        fillLoginRegisterForm(newEmail(), "Aa12345!");
-        clickOnRegistrationButton();
-        Assert.assertTrue(isAlertPresent());
+        app.getUser().clickOnLoginLink();
+        app.getUser().fillLoginRegisterForm(new de.phonebook.model.User().setEmail("irinafengshui71@gmail.com").setPassword("Aa12345!"));
+        app.getUser().clickOnRegistrationButton();
+        Assert.assertTrue(app.getUser().isAlertPresent());
 
 
     }

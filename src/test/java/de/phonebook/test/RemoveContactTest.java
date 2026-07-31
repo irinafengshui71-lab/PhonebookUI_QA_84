@@ -10,22 +10,25 @@ public class RemoveContactTest extends TestBase {
 
     @BeforeMethod
     public void precondition(){
-        clickOnLoginLink();
-        fillLoginRegisterForm("irinafengshui71@gmail.com", "Aa12345!");
-        clickLoginButton();
+        app.getUser().clickOnLoginLink();
+        app.getUser().fillLoginRegisterForm(new de.phonebook.model.User().setEmail("irinafengshui71@gmail.com").setPassword("Aa12345!"));
+        app.getUser().clickLoginButton();
 
-        clickOnAddLink();
-        fillAddContactForm("Oliver", "Kan", "123456782390", "kan@gmail.com", "TelAviv", "QA");
-        clickOnSaveButton();
+        app.getContact().clickOnAddLink();
+        app.getContact().fillAddContactForm(new de.phonebook.model.Contact().setName("Oliver")
+                .setLastname("Kan").setPhone("123456782390")
+                .setEmail("kan@gmail.com").setAddress("TelAviv")
+                .setDesk("QA"));
+        app.getContact().clickOnSaveButton();
 
     }
     @Test
     public void removeContactTest(){
-       int sizeBefore = sizeOfContacts();
-        click(By.cssSelector(".contact-item_card__2SOIM"));
-        click(By.xpath("//button[.='Remove']"));
-        pause(1000);
-        int sizeAfter = sizeOfContacts();
+       int sizeBefore = app.getContact().sizeOfContacts();
+        app.getContact().click(By.cssSelector(".contact-item_card__2SOIM"));
+        app.getContact().click(By.xpath("//button[.='Remove']"));
+        app.getContact().pause(1000);
+        int sizeAfter = app.getContact().sizeOfContacts();
         Assert.assertEquals(sizeAfter,sizeBefore -1);
     }
 
