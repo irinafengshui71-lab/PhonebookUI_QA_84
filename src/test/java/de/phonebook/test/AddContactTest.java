@@ -1,16 +1,20 @@
 package de.phonebook.test;
 
+import de.phonebook.core.TestBase;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-public class AddContactTest extends TestBase{
+public class AddContactTest extends TestBase {
 
 
    @BeforeMethod
    public void precondition(){
+       if (!app.getUser().isLoginLinkPresent()) {
+           app.getUser().clickOnSignOutButton();
+       }
        app.getUser().clickOnLoginLink();
        app.getUser().fillLoginRegisterForm( new de.phonebook.model.User().setEmail("irinafengshui71@gmail.com").setPassword("Aa12345!"));
        app.getUser().clickLoginButton();
