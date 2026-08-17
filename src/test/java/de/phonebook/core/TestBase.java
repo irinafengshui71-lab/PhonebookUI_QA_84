@@ -20,6 +20,7 @@ public class TestBase {
     public void setUp(){
         app.init();
 
+
     }
 
     @AfterSuite(enabled = true)
