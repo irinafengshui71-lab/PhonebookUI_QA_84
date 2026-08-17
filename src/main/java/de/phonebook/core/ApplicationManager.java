@@ -19,7 +19,7 @@ public class ApplicationManager{
     WebDriver driver;
 
     public ApplicationManager(String browser) {
-        this.browser = browser;
+        this.browser =browser;
     }
 
     public UserHelper getUser() {
@@ -41,9 +41,9 @@ public class ApplicationManager{
         }else if (browser.equalsIgnoreCase("edge")){
             WebDriverManager.edgedriver().setup();
             driver = new EdgeDriver();
-        }
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+   }
+//        WebDriverManager.chromedriver().setup();
+//        driver = new ChromeDriver();
         driver.get("https://telranedu.web.app/home");
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -62,11 +62,4 @@ public class ApplicationManager{
 }
 //gradle -Pbrowser=firfox clean qa
 //./gradlew qa -Pbrowser=firefox
-/*
-task qa(type: Test){
-    useTestNG()
-    if (project.hasProperty("browser")){
-        systemProperty 'browser', "${browser}"
-    }
-}
- */
+
