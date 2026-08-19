@@ -21,7 +21,7 @@ public class LoginTest extends TestBase {
     public void loginRegisteredUserPositiveTest(){
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new User()
-                .setEmail(UserData.EMAIL).setPassword(UserData.PASSWORT));
+                .setEmail(UserData.EMAIL).setPassword(UserData.PASSWORD));
         app.getUser().clickLoginButton();
         Assert.assertTrue(app.getUser().isSignOutButtonPresent());
 
@@ -30,7 +30,7 @@ public class LoginTest extends TestBase {
     public void loginRegisteredUserWithoutEmailNegativeTest(){
         app.getUser().clickOnLoginLink();
         app.getUser().fillLoginRegisterForm(new de.phonebook.model.User()
-                .setEmail("").setPassword(UserData.PASSWORT));
+                .setEmail("").setPassword(UserData.PASSWORD));
         app.getUser().clickLoginButton();
         Assert.assertTrue(app.getUser().isAlertPresent());
 
