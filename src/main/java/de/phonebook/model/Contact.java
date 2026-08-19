@@ -60,4 +60,16 @@ public class Contact{
     public String getDesk() {
         return desk;
     }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "name='" + name + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", desk='" + desk + '\'' +
+                '}';
+    }
 }

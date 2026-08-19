@@ -17,7 +17,9 @@ public class CreateAccountTests extends TestBase {
     public void newUserRegisterPositiveTest() {
 
         app.getUser().clickOnLoginLink();
-        app.getUser().fillLoginRegisterForm(new de.phonebook.model.User().setEmail("irinafengshui71@gmail.com").setPassword("Aa12345!"));
+        app.getUser().fillLoginRegisterForm(new de.phonebook.model.User()
+                .setEmail("irinafengshui71@gmail.com")
+                .setPassword("Aa12345!"));
         app.getUser().clickOnRegistrationButton();
         Assert.assertTrue(app.getUser().isSignOutButtonPresent());
 

@@ -31,12 +31,21 @@ public class ContactHelper extends BaseHelper {
     }
 
     public boolean verifyByName(String text) {
-        List<WebElement> contacts = driver.findElements(By.cssSelector("h2"));
+        if (verifyText(text, By.cssSelector("h2"))) return true;
+        return false;
+    }
+
+    public boolean verifyText(String text, By locator) {
+        List<WebElement> contacts = driver.findElements(locator);
         for (WebElement element: contacts){
             if (element.getText().contains(text))
                 return true;
         }
         return false;
+    }
+    public void removeContact() {
+        click(By.cssSelector(".contact-item_card__2SOIM"));
+        click(By.xpath("//button[.='Remove']"));
     }
 
     public int sizeOfContacts() {
@@ -46,5 +55,10 @@ public class ContactHelper extends BaseHelper {
         }
         return  0;
 
+    }
+
+    public boolean verifyByPhone(String text) {
+        if (verifyText(text,By.cssSelector("h3"))) return true;
+        return false;
     }
 }

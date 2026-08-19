@@ -36,7 +36,7 @@ public class ApplicationManager{
 
     public void init() {
         if (browser.equalsIgnoreCase("chrome")){
-            WebDriverManager.chromiumdriver().setup();
+            WebDriverManager.chromedriver().setup();
             driver = new ChromeDriver();
         }else if (browser.equalsIgnoreCase("edge")){
             WebDriverManager.edgedriver().setup();
