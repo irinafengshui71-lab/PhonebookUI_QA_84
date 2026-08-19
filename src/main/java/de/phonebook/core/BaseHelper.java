@@ -42,7 +42,6 @@ public class BaseHelper {
             return true;
         }
 
-
     }
 
     public void pause(int millis){
